@@ -52,14 +52,14 @@ class IrActionReport(models.Model):
     def _render(self, report_ref, res_ids, data=None):
         report = self._get_report(report_ref)
         substitution_report = report.get_substitution_report(res_ids)
-        return super(IrActionReport, self)._render(
+        return super()._render(
             substitution_report.report_name, res_ids, data=data
         )
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         report = self._get_report(report_ref)
         substitution_report = report.get_substitution_report(res_ids)
-        return super(IrActionReport, self)._render_qweb_pdf(
+        return super()._render_qweb_pdf(
             substitution_report, res_ids=res_ids, data=data
         )
 
@@ -72,7 +72,7 @@ class IrActionReport(models.Model):
             elif isinstance(docids, list):
                 active_ids = docids
             substitution_report = self.get_substitution_report(active_ids)
-            return super(IrActionReport, substitution_report).report_action(
+            return super().report_action(
                 docids, data, config
             )
         return super().report_action(docids, data, config)
